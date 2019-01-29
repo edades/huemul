@@ -68,7 +68,7 @@ module.exports = robot => {
           name: item.name,
           description: item.blurb,
           creator: item.creator.name,
-          location: item.location.displayable_name,
+          location: item.location ? item.location.displayable_name : 'No location',
           url: item.urls.web.project,
           id: key
         }))
