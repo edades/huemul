@@ -91,11 +91,11 @@ module.exports = robot => {
               },
               {
                 value: `Creado por: ${item.creator}`,
-                short: false
+                short: true
               },
               {
                 value: `Ubicación: ${item.location}`,
-                short: false
+                short: true
               }
             ]
             send(options)
@@ -103,9 +103,11 @@ module.exports = robot => {
         })
         if (projects.length > 3) {
           const moreUrl = `https://www.kickstarter.com/discover/popular?term=${term}&page=1&sort=magic`
-          options.attachments[0].title = `Ver más proyectos de ${term}`
+          options.attachments[0].title = `Ver más proyectos de *${term}*`
           options.attachments[0].title_link = moreUrl
           options.attachments[0].fallback = `Ver más en: ${moreUrl}`
+          options.attachments[0].fields = []
+          options.attachments[0].color = '#004085'
           send(options)
         }
       } catch (err) {
